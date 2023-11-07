@@ -1,48 +1,58 @@
 function getComputerChoice() {
     let choice = Math.floor( Math.random() * 1000 )  % 3;
 
-    console.log(choice);
-
     switch (choice) {
-        case 0: return "rock";
-        case 1: return "scissors";
-        case 2: return "paper";
+        case 0: return "✊";
+        case 1: return "✌";
+        case 2: return "✋";
     }
 }
 
 function playRound(playerChoice, computerChoice) {
 
-    playerChoice = playerChoice.toLowerCase();
-
     if (playerChoice === computerChoice) 
         return "Tie";
 
-    if (playerChoice === "rock") {
+    if (playerChoice === "✊") {
 
-        if (computerChoice === "paper")
-            return "You lose! paper beats rock";
+        if (computerChoice === "✋")
+            return "You lose!";
         else 
-            return "You win! rock beats scissors";
+            return "You win!";
     }
-    else if (playerChoice === "paper") {
+    else if (playerChoice === "✋") {
 
-        if (computerChoice == "rock")
-            return "You win! paper beats rock";
+        if (computerChoice == "✊")
+            return "You win!";
         else 
-            return "You lose! scissors beats paper";
+            return "You lose!";
     }   
     else {
-        if (computerChoice == "rock")
-            return "You lose! rock beats scissors";
+        if (computerChoice == "✊")
+            return "You lose!";
         else 
-            return "You win! scissors beats paper";
+            return "You win!";
     } 
 }
 
+const buttons = document.querySelectorAll('.choice');
 
-for (i=0; i<5; i++) {
-    let playerSelection = prompt();
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-}
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        let playerChoice = button.textContent;
+        let computerChoice = getComputerChoice();
+
+        const playerIcon = document.querySelector("#playerIcon");
+        playerIcon.textContent = playerChoice;
+
+        const computerIcon = document.querySelector("#computerIcon");
+        computerIcon.textContent = computerChoice;
+
+        result = playRound(playerChoice, computerChoice);
+
+        const resultText = document.querySelector('#result');
+        resultText.textContent = result;
+    });
+});
+
 
