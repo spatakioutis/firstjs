@@ -4,9 +4,9 @@ function getComputerChoice() {
     console.log(choice);
 
     switch (choice) {
-        case 0: return "rock"; break;
-        case 1: return "scissors"; break;
-        case 2: return "paper"; break;
+        case 0: return "rock";
+        case 1: return "scissors";
+        case 2: return "paper";
     }
 }
 
@@ -40,7 +40,7 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
-for (i=0; i<5; i++){
+for (i=0; i<5; i++) {
     let playerSelection = prompt();
     let computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
